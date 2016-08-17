@@ -112,8 +112,6 @@ public class myParserEmailApplication implements ActionListener {
 	private static boolean finish = false;	
 	private ExecutorService threads;
 	
-	//элементы интерфейса
-	
 	private JButton buttonStart;
 	private JLabel valueCounter;
 	private JProgressBar progressBar;
@@ -128,7 +126,6 @@ public class myParserEmailApplication implements ActionListener {
 	private	JMenuItem	menuFileExit;
 	private JMenuItem  menuAboutApp;
 	JList<String> jListOfEmails;
-	//Списки
 	
 	@SuppressWarnings("rawtypes")
 	private List<Future> tasks;
@@ -149,9 +146,6 @@ public class myParserEmailApplication implements ActionListener {
 	//private final int	ITEM_RADIO	=	2;
 
 
-	
-	
-	
 	/**
 	 * Launch the application.
 	 */
@@ -265,20 +259,17 @@ public class myParserEmailApplication implements ActionListener {
 		);
 		internalFrameAppInfo.getContentPane().setLayout(groupLayout);
 		
-		//Метка "Put your target url:"
 		
 		JLabel lblNewLabel = new JLabel("Put your target url");
 		lblNewLabel.setBounds(10, 16, 122, 23);
 		frmEmailParserBy.getContentPane().add(lblNewLabel);
 		
-		//Текстовое поле
 		
 		textField = new JTextField();
 		textField.setBounds(127, 11, 405, 28);
 		frmEmailParserBy.getContentPane().add(textField);
 		textField.setColumns(10);
-		
-		//Кнопка "СТАРТ"
+	
 		
 		buttonStart = new JButton("OK");
 		buttonStart.setForeground(Color.BLUE);
@@ -286,7 +277,7 @@ public class myParserEmailApplication implements ActionListener {
 		buttonStart.addActionListener(this);
 		frmEmailParserBy.getContentPane().add(buttonStart);
 		
-		//опция "Within site" ( "только внутри сайта")
+		// "Within site" 
 		
 		JCheckBox rdbtnNewRadioButton = new JCheckBox("only within a site");
 		rdbtnNewRadioButton.setBounds(185, 46, 141, 23);
@@ -303,7 +294,6 @@ public class myParserEmailApplication implements ActionListener {
 		});
 		frmEmailParserBy.getContentPane().add(rdbtnNewRadioButton);
 		
-		//Выбор глубины
 		
 		JComboBox<String> comboBoxSelectDepth = new JComboBox<String>( );
 		comboBoxSelectDepth.setBounds(135, 50, 44, 23);
@@ -317,14 +307,13 @@ public class myParserEmailApplication implements ActionListener {
 		});
 		frmEmailParserBy.getContentPane().add(comboBoxSelectDepth);
 		
-		//Метка "set depth " для выбора глубины
+		// "set depth " 
 		 
 		JLabel lblSelectDepth = new JLabel("Select depth ");
 		lblSelectDepth.setBounds(54, 49, 97, 23);
 		lblSelectDepth.setVerticalAlignment(SwingConstants.BOTTOM);
 		frmEmailParserBy.getContentPane().add(lblSelectDepth);
 		
-		//Панель для текстового поля с выводом информаации о работе
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(35, 93, 497, 70);
@@ -333,9 +322,8 @@ public class myParserEmailApplication implements ActionListener {
 		textAreaInfoWork = new JTextArea();
 		scrollPane.setViewportView(textAreaInfoWork);
 		//listModelGetHost = new DefaultListModel();
-		listModelOfEmails = new DefaultListModel<String>(); //Для вывода имейлов работаем с динамическим списком
+		listModelOfEmails = new DefaultListModel<String>(); 
 		
-		// Кнопка "СТОП"
 		 
 		JButton buttonStop = new JButton("complete");
 		buttonStop.setForeground(Color.RED);
@@ -387,13 +375,11 @@ public class myParserEmailApplication implements ActionListener {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(133, 209, 260, 111);
 		frmEmailParserBy.getContentPane().add(scrollPane_1);
-		
-		//Вывод имейлов
+	
 		   
 		jListOfEmails = new JList<String>( listModelOfEmails);
 		scrollPane_1.setViewportView(jListOfEmails);
-		 
-		//Прогресс-бар
+	
 		 
 		progressBar = new JProgressBar();
 		progressBar.setBackground(Color.WHITE);
@@ -404,7 +390,6 @@ public class myParserEmailApplication implements ActionListener {
 		//  progressBar.setMaximum(100);
 		frmEmailParserBy.getContentPane().add(progressBar);
 		
-		//Для особенного режима
 		
 		JCheckBox chckbxSekect = new JCheckBox("resource-intensive mode");
 		chckbxSekect.setBounds(185, 72, 167, 19);
@@ -421,7 +406,6 @@ public class myParserEmailApplication implements ActionListener {
 			}
 		});
 		
-		//Вывод данных про колличество обработанных страничек, планируемых для обработки 
 		
 		valueCounter = new JLabel("");
 		valueCounter.setBounds(35, 164, 509, 23);
@@ -466,8 +450,6 @@ public class myParserEmailApplication implements ActionListener {
 		
 		
 		
-		//Меню файл для сохранения имейлов в текстовом файле
-		
 		menuFile = new JMenu( "File" );
 		menuFile.setMnemonic( 'F' );
 		menuBar.add( menuFile );
@@ -479,20 +461,19 @@ public class myParserEmailApplication implements ActionListener {
 	//							new ImageIcon( "open.gif" ), 'O',
 	//							"Open a new file" );
 		
-		//Создаем меню "файл", добавля в него обработчика выбора сохранить
+	
 		
 		menuFileSave = CreateMenuItem( menuFile, "Save emails",
 				new ImageIcon(this.getClass().getResource( "/save.gif")), 'S',
 								" Save as file.txt" );
 		
-		// Реализуем обработчика в анонимном классе
 		
 		menuFileSave.addActionListener( new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			    JFileChooser chooser = new JFileChooser();
 			    //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);  
 			    
-			    //Дает невозможным сохранение без ввода имени
+	
 			    
 			    chooser.setCurrentDirectory(new File(".txt"));
 			    //int returnVal = fc.showOpenDialog(frame);
@@ -503,7 +484,7 @@ public class myParserEmailApplication implements ActionListener {
 		        	File selectedFile = chooser.getSelectedFile();
 		          // fileName = selectedFile.getName();
 		        	
-		        //Запись в текстовый файл из статического списка HashMap имейлов (ключ) и соотвественных урлов (значение)  
+		       
 		        	
 		         try{
 		        	  //File fileTwo=new File("filetwo.txt");
@@ -539,7 +520,7 @@ public class myParserEmailApplication implements ActionListener {
 		         	 f.printStackTrace();
 		        }
 				}
-			});//забор обработчика
+			});
 		
 		//menuFileSaveAs = CreateMenuItem( menuFile, ITEM_PLAIN,
 		//						"Save As...", null, 'A',
@@ -548,7 +529,6 @@ public class myParserEmailApplication implements ActionListener {
 		//menuFile.addSeparator();
 		//menuFile.add( menuProperty );	
 		
-		//Добавляем в меню пункт "выход" 
 		
 		menuFile.addSeparator();
 		menuFileExit = CreateMenuItem( menuFile,
@@ -563,7 +543,6 @@ public class myParserEmailApplication implements ActionListener {
 		//fileChooser = new JFileChooser();
 		
 		
-		//Меню "помощ"
 		
 			JMenu menuHelp = new JMenu("Help");
 			menuHelp.setMnemonic('H');
@@ -579,16 +558,13 @@ public class myParserEmailApplication implements ActionListener {
 		    	
 		    }
 		});
-	}//Задний забор метода инициализации
+	}
 
 	
 	
 	
 	
 	
-	/**
-	 * Обработчик по нажатию "СТАРТ"
-	 */
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -597,16 +573,16 @@ public class myParserEmailApplication implements ActionListener {
 		//Parser parseHTML;
 		String myURL = textField.getText();	
 	
-		//проверка на валидность введеной ссылки 
+		
 		
 		if (! Pattern.matches(URL_VALIDATION_PATTERN, myURL)){
 			textField.setText(""); 		
 			JOptionPane.showMessageDialog(frmEmailParserBy, "Invalid value. Please input the right URL.");
 			return;}
-		//System.out.println( "Начинаю парсить  "+depthValue + flagWithinSite);	
+		
 		//if ( threadStop.isDone()){JOptionPane.showMessageDialog(frame, "It has not finished yet. Please, set stop"); return;}
 		
-		//Обнуляем елементы для нового запуска
+		
 		
 		InnerParserSwingWorker.counter = 0;
 		InnerParserSwingWorker.counterDone = 0;
@@ -614,20 +590,20 @@ public class myParserEmailApplication implements ActionListener {
 		finish = false;
 		InnerParserSwingWorker.uniqEmailsURLsList = new HashMap <>();
 		
-		//Очищение "черного" списка с хостами  уже пройденных сайтов для нового запуска		
+	
 		
 		if (!InnerParserSwingWorker.getListOfUniqueURL().isEmpty()) InnerParserSwingWorker.setListOfUniqueURL(new HashSet<String>()); 
-		textField.setText(""); //очистили текстовое поле
+		textField.setText(""); 
 		buttonStart.setEnabled(false);
-		threads = Executors.newFixedThreadPool(15); //для организации выполнения множества паралельных потоков 
-		//tasks = new ArrayList<Future>(); //для получения информации о потоках
+		threads = Executors.newFixedThreadPool(15); 
+		//tasks = new ArrayList<Future>(); 
 		tasks = new LinkedList<Future>(); 
 		//ParserWithinSite.setUniqURL(new HashSet<URL>());
 		// HTMLLinkExtractor.setUniqueListEmails(new HashMap< URL,String>());
-		InnerParserSwingWorker.stop = false;//снимаем флаг остановки
+		InnerParserSwingWorker.stop = false;
 		listToStopExecutes = new LinkedList<>();
 		
-		//Если парсим исключительно только внутри сайта
+		
 		
 		if (flagWithinSite){
 			textField.setText("I am parsing only within site.");
@@ -642,8 +618,7 @@ public class myParserEmailApplication implements ActionListener {
 			return;
 		}
 		
-		// Или запускаем логику приложения при помощи ExecutorService, если парсим все
-
+		
 		 try {
 			tasks.add(( threads).submit(new InnerParserSwingWorker(new URL(myURL), depthValue,mode)));
 		} catch (MalformedURLException e) {
@@ -671,11 +646,10 @@ public class myParserEmailApplication implements ActionListener {
 	
 	//textField.setEnabled(false);
 	
-	} // задний забор метода actionPerformed(ActionEvent arg0) 
+	} 
 	
 	
-	//Метод для идентификации и трансляции новости об окончани работы потоков выполняющих логику приложения
-	
+		
 	@SuppressWarnings("rawtypes")
 	public boolean IsFinish () {
 		/*try {
@@ -719,7 +693,7 @@ public class myParserEmailApplication implements ActionListener {
 			"Exit", null, 'x',
 			"Exit the program" );*/
 	
-	//Метод создает меню 
+	
 	
 	public JMenuItem CreateMenuItem( JMenu menu, String sText,
 			ImageIcon image, int acceleratorKey,
@@ -773,10 +747,7 @@ public class myParserEmailApplication implements ActionListener {
 	
 	
 	
-	/**
-	*  Наследник класса ParserSwingWorker, в котором реализуется костяк всей логики.
-	*  Он сделан внутренним классом класса myParserEmailApplication для открытия доступа к элементам интерфейса  
-	*/
+	
 	
 	 class InnerParserSwingWorker  extends  ParserSwingWorker {
 		ArrayList< String> getEmails;		 
@@ -792,9 +763,7 @@ public class myParserEmailApplication implements ActionListener {
 			
 		if(stop) return getEmails; //действует по нажатию "Стоп" 
 		//if (isCancelled())return getEmails;
-		//publish("Начинаю работу");
 		
-		//Парссинг при помощи регулярных выражений, используя HTMLLinkExtractor
 		
 		publish("Working with --->"+startUrl+".");
 		HTMLLinkExtractor linkExtra = new HTMLLinkExtractor(ReadFromUrl(), startUrl);	
@@ -803,7 +772,7 @@ public class myParserEmailApplication implements ActionListener {
 		uniqEmailsURLsList  = HTMLLinkExtractor.getUniqueListEmails();	
 		if(stop) return getEmails; //действует по нажатию "Стоп"
 		
-		//Трансляция отчетности 
+		
 		
 		for (String email : getEmails)
 	    publish(
@@ -817,10 +786,10 @@ public class myParserEmailApplication implements ActionListener {
 		//if (depth == 0  ) return getEmails;
 		if (depth == 0 | stop ) return getEmails;
 		//counter+=URLsList.size();
-		fillListURLs(); //Создание нового списка урлов для работы, отфильтрованого от ссылок с хостом  уже пройденного сайта 
+		fillListURLs(); 
 		counter += URLsFirstWebsite.size();
 		getListOfUniqueURL().add(linkInfo); 	
-		if(stop) return getEmails; //действует по нажатию "Стоп"
+		if(stop) return getEmails; 
 		parseNextURLs();	
 		return getEmails;
 	}
@@ -831,7 +800,7 @@ public class myParserEmailApplication implements ActionListener {
 	@Override
     protected void process(List<String> chunks) {
         for (String line : chunks) {
-        	if(stop) break;////действует по нажатию "Стоп"
+        	if(stop) break;
         	textAreaInfoWork.append(line);
         	textAreaInfoWork.append("\n");
         	// textArea.append("\n");  
@@ -841,7 +810,7 @@ public class myParserEmailApplication implements ActionListener {
     }	
 		
 	
-	//Запускается по окончанию текущего потока
+	
 	
 	@Override
     protected void done() {
@@ -869,18 +838,15 @@ public class myParserEmailApplication implements ActionListener {
 	
 	public void parseNextURLs (){
 		if(!URLsFirstWebsite.isEmpty()){				
-		//	System.out.println("Парсю основные ссылки" +"мой список ListURLs : "+URLsFirstWebsite );
-		//	System.out.println("Мой входящий URL: "+startUrl);
-		//	System.out.println("Мой поток"+Thread.currentThread().getName());
-		//	System.out.println (); 
+		
 		if (mode.equals(Mode.RESOURCE_INTENSIVE)){	
 			threads.shutdown();
-			threads = Executors.newFixedThreadPool(30); //для организации выполнения множества паралельных потоков 
+			threads = Executors.newFixedThreadPool(30);
 			listToStopExecutes.add(threads);
 		}
 			//	tasks = new ArrayList<Future>(); 
 			for (URL lnk : URLsFirstWebsite){
-				if(stop) break;////действует по нажатию "Стоп"
+				if(stop) break;
 				tasks.add(( threads).submit(new InnerParserSwingWorker(lnk, depth-1,mode)));
 			/*	 nextParser = new InnerParserSwingWorker(lnk, depth-1);
 				//threadStop = nextParser;

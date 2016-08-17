@@ -12,20 +12,20 @@ import java.util.regex.Pattern;
 //import javax.swing.DefaultListModel;
 
 public class HTMLLinkExtractor {
-	//Регулярные выражения
+	
 	
 	private  final String HTML_A_HREF_TAG_PATTERN ="<a\\s[^>]*href\\s*=\\s*\"(mailto:)*([^\"]*)\"";  //"<a href=\"(mailto:)*(.*?)\"";
 	private  final String URL_VALIDATION_PATTERN = "\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
 	private  final String HTML_A_MAILTO_TAG_PATTERN = "mailto:";
 	//private final  String EMAIL_VALID =  "[^\\?](.*)(\\?*.*)";
-	//Различные переменные 
+	
 	
 	private  Pattern hrefPttrn;
 	private Matcher matcherLink ;
 	//private Matcher matcherEmail;
 	private URL myURL;
 	
-	//Списки
+	
 	
 	//private DefaultListModel<String> listModel;
 	//private static HashMap < URL, String> uniqueListEmails;	
@@ -71,7 +71,7 @@ public class HTMLLinkExtractor {
 			getURL = matcherLink.group(2); // getting URLs and emails 
 			addToListOfURLs(getURL, URLsList);
 			printEmails(forEmailCheck, getURL); 		
-		} //System.out.println("Собрано новые сылки :"+URLsList+"Мой поток"+Thread.currentThread().getName());
+		} 
 		return URLsList;
 	}
  

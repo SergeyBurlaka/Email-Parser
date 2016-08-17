@@ -26,9 +26,9 @@ public abstract class ParserSwingWorker extends SwingWorker <List<String>, Strin
 	protected Mode mode;
 	static boolean stop = false;
 	protected ParserSwingWorker nextParser;
-	protected URL startUrl = null; //обрабатываема€ страничка
+	protected URL startUrl = null; 
 	protected int depth;
-	protected String linkInfo; //дл€ получени€ хоста обрабатываемой станички
+	protected String linkInfo; 
 	//protected DefaultListModel<String> listModel;
 	
 	//—писки
@@ -36,10 +36,10 @@ public abstract class ParserSwingWorker extends SwingWorker <List<String>, Strin
 	//protected List <URL> URLsFirstWebsite = new ArrayList<>(); // list of url for our website
 	protected List <URL> URLsFirstWebsite = new LinkedList<>(); // list of url for our website
 	protected List <String> URLsList = null; //сбор новых урлов
-	//private static ArrayList<Thread> threads = new ArrayList<>(); // дл€ остановки приложени€
-	static HashSet <String> listOfUniqueURL = new HashSet<>(); // бан лист с хостами уже просмотренных сайтов
-	static double counter ;// счетчик планируемых дл€ обработки страниц
-	static double counterDone; //счетчик обработанных страничек
+	//private static ArrayList<Thread> threads = new ArrayList<>(); 
+	static HashSet <String> listOfUniqueURL = new HashSet<>(); 
+	static double counter ;
+	static double counterDone;
 	
 	
 	
@@ -103,7 +103,7 @@ public abstract class ParserSwingWorker extends SwingWorker <List<String>, Strin
 	public void fillListURLs() throws MalformedURLException {
 		URL getUrl;
 		for(String str : URLsList ){
-			if(stop) break;////действует по нажатию "—топ"
+			if(stop) break;
 			getUrl=getURL(str);
 			if (!getListOfUniqueURL().contains(getUrl.getHost())) URLsFirstWebsite.add(getUrl);
 			}

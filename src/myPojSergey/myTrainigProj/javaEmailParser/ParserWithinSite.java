@@ -42,10 +42,10 @@ public class ParserWithinSite extends InnerParserSwingWorker {
 			linkInfo = startUrl.getHost();
 			URL getUrl;
 			for (String str : URLsList ){
-				getUrl=getURL(str); //достали следующий урл на проверку	
+				getUrl=getURL(str); 
 				if (getUrl.getHost().equals(linkInfo)&& ! uniqURL.contains(getUrl)){
-					URLsFirstWebsite.add(getUrl); //Ссылки с родительского сайта собираем вместе.
-					//System.out.println("Формирую мой список ListURLs: "+URLsFirstWebsite+" Мой родитель: "+startUrl);	
+					URLsFirstWebsite.add(getUrl); 
+					
 					getUniqURL().add(getUrl);	
 				}else				
 					getOtherURLs().add(getUrl);	
@@ -56,12 +56,9 @@ public class ParserWithinSite extends InnerParserSwingWorker {
 		
 		@Override
 		public void parseNextURLs(){
-				//ParserSwingWorker nextParser ;
-				//System.out.println("Парсю основные ссылки" +"мой список ListURLs : "+URLsFirstWebsite );
-				//System.out.println("Мой входящий URL: "+startUrl);
-				//System.out.println(+"Мой поток"+Thread.currentThread().getName());
+				
 				for (URL lnk : URLsFirstWebsite){					
-					if(stop) break;////действует по нажатию "Стоп"
+					if(stop) break;
 					tasks.add(( threads).submit( new ParserWithinSite ( lnk, depth-1,mode)	));
 				}
 			}	
