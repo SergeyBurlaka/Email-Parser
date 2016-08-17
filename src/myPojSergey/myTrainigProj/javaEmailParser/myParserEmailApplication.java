@@ -761,16 +761,16 @@ public class myParserEmailApplication implements ActionListener {
 	@Override
 	protected List<String> doInBackground() throws Exception {		
 			
-		if(stop) return getEmails; //действует по нажатию "Стоп" 
+		if(stop) return getEmails; 
 		//if (isCancelled())return getEmails;
 		
 		
 		publish("Working with --->"+startUrl+".");
 		HTMLLinkExtractor linkExtra = new HTMLLinkExtractor(ReadFromUrl(), startUrl);	
-		getEmails = linkExtra.getGetNewEmails (); //новые имейлы
-		URLsList = linkExtra.grabHTMLLinks();  //новые ссылки
+		getEmails = linkExtra.getGetNewEmails (); 
+		URLsList = linkExtra.grabHTMLLinks();  
 		uniqEmailsURLsList  = HTMLLinkExtractor.getUniqueListEmails();	
-		if(stop) return getEmails; //действует по нажатию "Стоп"
+		if(stop) return getEmails; 
 		
 		
 		
