@@ -31,11 +31,11 @@ public abstract class ParserSwingWorker extends SwingWorker <List<String>, Strin
 	protected String linkInfo; 
 	//protected DefaultListModel<String> listModel;
 	
-	//Списки
+	
 	
 	//protected List <URL> URLsFirstWebsite = new ArrayList<>(); // list of url for our website
 	protected List <URL> URLsFirstWebsite = new LinkedList<>(); // list of url for our website
-	protected List <String> URLsList = null; //сбор новых урлов
+	protected List <String> URLsList = null; 
 	//private static ArrayList<Thread> threads = new ArrayList<>(); 
 	static HashSet <String> listOfUniqueURL = new HashSet<>(); 
 	static double counter ;
@@ -50,53 +50,7 @@ public abstract class ParserSwingWorker extends SwingWorker <List<String>, Strin
 		this.mode = mode;
 		//System.out.println("I am parsing new URL. It is" +"  \""+url+"\"  "+"My depth = "+ depth);
 		}
-/*
-	@Override
-	protected String doInBackground() throws Exception {		
-		publish("Начинаю работу"+startUrl);
-		HTMLLinkExtractor linkExtra = new HTMLLinkExtractor(ReadFromUrl(), startUrl);	
-		 //HashMap<URL, String>   = linkExtra.getUniqueListEmails();
-		ArrayList< String> getEmails = linkExtra.getGetNewEmails ();
-		URLsList = linkExtra.grabHTMLLinks();
-		for (String email : getEmails)
-		publish(" "+email+" ");
-		linkInfo = startUrl.getHost();
-		publish(linkInfo);
-		if (depth == 0)return "The End";
-		fillListURLs();
-		getListOfUniqueURL().add(linkInfo); 	
-		//parseNextURLs();		
-		return "The End";
-	}	
-	
 
-	@Override
-    protected void process(List<String> chunks) {
-        for (String line : chunks) {
-            ui.appendText(line);
-        }
-      //  ui.setProgress(getProgress());
-    }
-	
-	
-	 @Override
-	    protected void done() {
-	      // ui.stopLoading();
-	        ui.appendText( " Я закончила");
-	    }
-	
-	
-	*/
-	
-	/*public  void ParseEmail () throws MalformedURLException{
-		HTMLLinkExtractor linkExtra = new HTMLLinkExtractor(ReadFromUrl(), startUrl,listModel);	
-		URLsList = linkExtra.grabHTMLLinks();
-		linkInfo = startUrl.getHost();		
-		if (depth == 0)return;
-		fillListURLs();
-		getListOfUniqueURL().add(linkInfo); 	
-		parseNextURLs();		
-	} */
 	
 	
 	
@@ -112,21 +66,7 @@ public abstract class ParserSwingWorker extends SwingWorker <List<String>, Strin
 	
 	
 	
-	public void parseNextURLs (){
-		/* if(!URLsFirstWebsite.isEmpty()){				
-		  /*	System.out.println("Парсю основные ссылки" +"мой список ListURLs : "+URLsFirstWebsite );
-			System.out.println("Мой входящий URL: "+startUrl);
-			System.out.println(+"Мой поток"+Thread.currentThread().getName());
-			System.out.println (); 
-			for (URL lnk : URLsFirstWebsite){
-				nextParser = new ParserSwingWorker(lnk, depth-1);
-				nextParser.execute();
-				//ParseMainLinks parseFirstSite = new ParseMainLinks(lnk, depth-1,listModel);
-				//getThreads().add(parseFirstSite);
-				//parseFirstSite.start();
-			}
-		}	*/
-	}
+	
 	
 	
 	
