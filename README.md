@@ -3,7 +3,7 @@
 Parsing HTML using the regular expressions.
 
 ### Download
-[APK from Github](https://github.com/SergeyBurlaka/Email-Parser/blob/master/JAR/EmailParser.jar)  
+[jar from Github](https://github.com/SergeyBurlaka/Email-Parser/blob/master/JAR/EmailParser.jar)  
 
 ### Screenshots
 
